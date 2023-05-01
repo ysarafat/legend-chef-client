@@ -1,9 +1,10 @@
 /* eslint-disable camelcase */
 import React from 'react';
 import { BsArrowRightCircle, BsEyeFill, BsFillHeartFill } from 'react-icons/bs';
+import { Link } from 'react-router-dom';
 
 function Recipes({ recipes }) {
-    const { recipe, recipe_img, short_des, likes, view } = recipes;
+    const { id, recipe, recipe_img, short_des, likes, view } = recipes;
 
     return (
         <section className="w-full lg:w-[49%]">
@@ -32,12 +33,15 @@ function Recipes({ recipes }) {
                         </div>
                     </div>
                     <div className="pr-4 hover:text-black">
-                        <BsArrowRightCircle
-                            style={{
-                                fontSize: 30,
-                                color: '#4DBF7B',
-                            }}
-                        />
+                        <Link to={`/recipe/${id}`}>
+                            {' '}
+                            <BsArrowRightCircle
+                                style={{
+                                    fontSize: 30,
+                                    color: '#4DBF7B',
+                                }}
+                            />
+                        </Link>
                     </div>
                 </div>
             </div>
