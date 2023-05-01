@@ -1,0 +1,11 @@
+.bg_img {
+  background-image: linear-gradient(
+      360deg,
+      hsla(0, 0%, 0%, 0.301) 0%,
+      rgba(0, 0, 0, 0.733) 100%
+    ),
+    url("../../../assets/image/banner-2.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
