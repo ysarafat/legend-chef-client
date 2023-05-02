@@ -1,20 +1,52 @@
+/* eslint-disable consistent-return */
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { BsGithub } from 'react-icons/bs';
 import { FcGoogle } from 'react-icons/fc';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../Contexts/AuthProviders';
 
 function Register() {
     const [showPass, setShowPass] = useState(false);
+    const [error, setError] = useState('');
+    const { createUser, updateUser } = useContext(AuthContext);
+    const handelRegister = (e) => {
+        e.preventDefault();
+        setError('');
+        const form = e.target;
+        const name = form.name.value;
+        const photo = form.photo.value;
+        const email = form.email.value;
+        const password = form.password.value;
+        const confirmPassword = form.cPassword.value;
+        if (password !== confirmPassword) {
+            return setError('Your password did not match');
+        }
+        if (!/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{6,}$/.test(password)) {
+            return setError(
+                'Password must be a minimum of 6 digits and must be a letter A-Z with a special character'
+            );
+        }
+        createUser(email, password)
+            .then((res) => {
+                console.log(res);
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    };
+
     return (
         <section className="container mx-auto px-4 flex justify-center items-center min-h-[calc(100vh-600px)] mt-16">
             <div className=" border border-slate-200 p-5 w-full lg:w-[600px] rounded-lg">
                 <h1 className="text-2xl font-bold text-center mb-5">Register</h1>
-                <form className="flex flex-col">
+                <p className="my-4 text-red-500">{error}</p>
+                <form onSubmit={handelRegister} className="flex flex-col">
                     <label htmlFor="" className="text-lg">
                         Full Name
                     </label>
                     <input
+                        name="name"
                         className="outline-none box-shadow rounded-lg px-3 h-11 w-full my-2 focus:border-s-8 border-primary"
                         type="text"
                         placeholder="Enter Your Name"
@@ -23,6 +55,7 @@ function Register() {
                         Photo URL
                     </label>
                     <input
+                        name="photo"
                         className="outline-none box-shadow rounded-lg px-3 h-11 w-full my-2 focus:border-s-8 border-primary"
                         type="text"
                         placeholder="Photo URL"
@@ -31,6 +64,7 @@ function Register() {
                         Email Address
                     </label>
                     <input
+                        name="email"
                         className="outline-none box-shadow rounded-lg px-3 h-11 w-full my-2 focus:border-s-8 border-primary"
                         type="email"
                         placeholder="Enter Email"
@@ -39,6 +73,7 @@ function Register() {
                         Password
                     </label>
                     <input
+                        name="password"
                         className="outline-none box-shadow rounded-lg px-3 h-11 w-full my-2 focus:border-s-8 border-primary"
                         type={showPass ? 'text' : 'password'}
                         placeholder="Enter Password"
@@ -47,6 +82,7 @@ function Register() {
                         Confirm Password
                     </label>
                     <input
+                        name="cPassword"
                         className="outline-none box-shadow rounded-lg px-3 h-11 w-full my-2 focus:border-s-8 border-primary"
                         type={showPass ? 'text' : 'password'}
                         placeholder="Enter Confirm Password"

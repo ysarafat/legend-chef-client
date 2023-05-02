@@ -1,22 +1,38 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { BsGithub } from 'react-icons/bs';
 import { FcGoogle } from 'react-icons/fc';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../Contexts/AuthProviders';
 import './Login.css';
 
 function Login() {
+    const { login } = useContext(AuthContext);
     const [showPass, setShowPass] = useState(false);
+    const handelLogin = (e) => {
+        e.preventDefault();
+        const form = e.target;
+        const email = form.email.value;
+        const password = form.password.value;
+        login(email, password)
+            .then((res) => {
+                console.log(res);
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    };
 
     return (
         <div className="container mx-auto px-4 flex justify-center items-center  min-h-[calc(100vh-600px)] mt-16 ">
             <div className=" border border-slate-200 p-5 w-full lg:w-[600px] rounded-lg">
                 <h1 className="text-2xl font-bold text-center mb-5">Login</h1>
-                <form className="flex flex-col">
+                <form onSubmit={handelLogin} className="flex flex-col">
                     <label htmlFor="" className="text-lg">
                         Email Address
                     </label>
                     <input
+                        name="email"
                         className="outline-none box-shadow rounded-lg px-3 h-11 w-full my-2 focus:border-s-8 border-primary"
                         type="email"
                         placeholder="Enter Email"
@@ -25,6 +41,7 @@ function Login() {
                         Password
                     </label>
                     <input
+                        name="password"
                         className="outline-none box-shadow rounded-lg px-3 h-11 w-full my-2 focus:border-s-8 border-primary"
                         type={showPass ? 'text' : 'password'}
                         placeholder="Enter Password"

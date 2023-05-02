@@ -5,8 +5,9 @@ import { AuthContext } from '../../../Contexts/AuthProviders';
 
 function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
-    const {x} = useContext(AuthContext)
-    console.log(x);
+    const { user, logout } = useContext(AuthContext);
+    console.log(user);
+
     return (
         <nav className="flex justify-between items-center container px-4 mx-auto py-5 border-b border-slate-100">
             <div>
@@ -33,26 +34,48 @@ function Navbar() {
                         Recipes
                     </NavLink>
                 </li>
+
+                {!user && (
+                    <li>
+                        <NavLink
+                            to="/register"
+                            className={({ isActive }) =>
+                                isActive ? 'text-primary' : 'text-[#161616] hover:text-red-500'
+                            }
+                        >
+                            Register
+                        </NavLink>
+                    </li>
+                )}
                 <li>
-                    <NavLink
-                        to="/login"
-                        className={({ isActive }) =>
-                            isActive ? 'text-primary' : 'text-[#161616] hover:text-red-500'
-                        }
-                    >
-                        Login
-                    </NavLink>
+                    {user ? (
+                        <NavLink
+                            onClick={logout}
+                            className={({ isActive }) =>
+                                isActive ? 'text-primary' : 'text-[#161616] hover:text-red-500'
+                            }
+                        >
+                            Logout
+                        </NavLink>
+                    ) : (
+                        <NavLink
+                            to="/login"
+                            className={({ isActive }) =>
+                                isActive ? 'text-primary' : 'text-[#161616] hover:text-red-500'
+                            }
+                        >
+                            Login
+                        </NavLink>
+                    )}
                 </li>
-                <li>
-                    <NavLink
-                        to="/register"
-                        className={({ isActive }) =>
-                            isActive ? 'text-primary' : 'text-[#161616] hover:text-red-500'
-                        }
-                    >
-                        Register
-                    </NavLink>
-                </li>
+                {user && (
+                    <img
+                        title={user.displayName}
+                        className="w-10 h-10 rounded-full border-2 border-primary"
+                        src={user.photoURL}
+                        alt=""
+                    />
+                )}
             </ul>
             <div className="lg:hidden">
                 <button onClick={() => setIsOpen(!isOpen)}>
@@ -62,12 +85,20 @@ function Navbar() {
                         <XMarkIcon class="h-8 w-8 text-primary" />
                     )}
                 </button>
+
                 {isOpen && (
                     // eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions
                     <ul
                         onClick={() => setIsOpen(!isOpen)}
                         className="absolute  duration-300 delay-500	 top-[79.34px] left-0 right-0 min-h-[calc(100vh-80px)]  w-full px-5 py-5 z-10 bg-[#C5EAD4] flex justify-center items-center flex-col gap-5  text-lg"
                     >
+                        {user && (
+                            <img
+                                className="w-10 h-10 rounded-full border-2 border-primary"
+                                src={user.photoURL}
+                                alt=""
+                            />
+                        )}
                         <li>
                             <NavLink
                                 to="/"
@@ -88,16 +119,7 @@ function Navbar() {
                                 Recipes
                             </NavLink>
                         </li>
-                        <li>
-                            <NavLink
-                                to="/login"
-                                className={({ isActive }) =>
-                                    isActive ? 'text-primary' : 'text-[#161616] hover:text-red-500'
-                                }
-                            >
-                                Login
-                            </NavLink>
-                        </li>
+
                         <li>
                             <NavLink
                                 to="/register"
@@ -107,6 +129,31 @@ function Navbar() {
                             >
                                 Register
                             </NavLink>
+                        </li>
+                        <li>
+                            {user ? (
+                                <NavLink
+                                    onClick={logout}
+                                    className={({ isActive }) =>
+                                        isActive
+                                            ? 'text-primary'
+                                            : 'text-[#161616] hover:text-red-500'
+                                    }
+                                >
+                                    Logout
+                                </NavLink>
+                            ) : (
+                                <NavLink
+                                    to="/login"
+                                    className={({ isActive }) =>
+                                        isActive
+                                            ? 'text-primary'
+                                            : 'text-[#161616] hover:text-red-500'
+                                    }
+                                >
+                                    Login
+                                </NavLink>
+                            )}
                         </li>
                     </ul>
                 )}
