@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import React from 'react';
 import {
     BsEyeFill,
@@ -11,7 +12,7 @@ import { useLoaderData } from 'react-router-dom';
 
 function RecipeDetails() {
     const RecipeDetails = useLoaderData();
-    const { recipe_img, recipe, chef_name, description, likes, view } = RecipeDetails;
+    const { recipe_img, recipe, chef_name, description, likes, view, ingredients } = RecipeDetails;
     return (
         <div className="container mx-auto px-4">
             <img className="w-full h-[800px] object-cover rounded-lg " src={recipe_img} alt="" />
@@ -20,9 +21,17 @@ function RecipeDetails() {
                 <p className="text-text-secondary text-lg font-semibold">Chef: {chef_name}</p>
             </div>
 
-            <div className="text-text-secondary">
-                <span className="font-bold text-black mr-2">Recipe Description:</span>
-                {description}
+            <div>
+                <span className="font-bold text-black mr-2">
+                    Recipe Description:
+                    {ingredients?.map((item) => (
+                        <li className="text-text-secondary">{item}</li>
+                    ))}
+                </span>
+
+                <div className="font-bold text-black mr-2">
+                    Cooking Method: <p className="text-text-secondary mt-2">{description}</p>
+                </div>
             </div>
             <div className="flex justify-between items-center mt-9 flex-col-reverse lg:flex-row">
                 <div className="flex items-center gap-2">

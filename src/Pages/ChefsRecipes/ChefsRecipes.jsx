@@ -1,3 +1,5 @@
+/* eslint-disable eqeqeq */
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable camelcase */
 import React, { useEffect, useState } from 'react';
 import { BsHeartFill } from 'react-icons/bs';
@@ -16,7 +18,7 @@ function ChefsRecipes() {
                 setChef(bchef);
             });
     }, []);
-    const { name, bio, likes, view, no_recipes, experience } = chef;
+    const { name, bio, likes, no_recipes, experience } = chef;
     const imageUrl = chef.image;
     const style = {
         backgroundImage: `linear-gradient(360deg, hsla(0, 0%, 0%, 0.485) 0%, rgba(0, 0, 0, 0.485) 100%), url(${imageUrl})`,

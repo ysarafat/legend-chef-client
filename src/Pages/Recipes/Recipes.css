@@ -1,0 +1,13 @@
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.card {
+  flex-grow: 1;
+  min-width: 300px; /* set minimum width to prevent cards from becoming too small */
+  height: 100%;
+  margin: 10px;
+  /* add any other styling you need */
+}
