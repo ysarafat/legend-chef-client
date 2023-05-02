@@ -8,15 +8,15 @@ function Recipes({ recipes }) {
 
     return (
         <section className="w-full lg:w-[49%]">
-            <div className="flex gap-4 border  border-slate-200 rounded-lg hover:shadow">
+            <div className="flex flex-col lg:flex-row gap-4 border  border-slate-200 rounded-lg hover:shadow">
                 <div>
-                    <img
-                        className="w-[300px] h-[180px] object-cover rounded-s-lg"
+                    <div className='w-full lg:w-[300px] lg:h-[200px] object-cover '><img
+                        className="rounded-lg lg:rounded-s-lg h-full w-full"
                         src={recipe_img}
                         alt=""
-                    />
+                    /></div>
                 </div>
-                <div className="flex gap-6 items-center">
+                <div className="flex gap-6 items-center px-2 lg:px-0">
                     <div className="py-3 flex-1">
                         <h1 className="lg:text-2xl text-xl font-bold">{recipe}</h1>
                         <p className="mt-2 text-text-secondary">{short_des}</p>

@@ -45,9 +45,9 @@ function Home() {
                                     </div>
                                 </div>
                             </div>
-                            <div className="bg-primary text-center text-white py-4 px-6 w-full text-lg rounded-b-lg hover:bg-black duration-300">
+                            <div>
                                 <Link to={`/recipes/${c.id}`} className="">
-                                    View Recipes
+                                     <button className="bg-primary text-center text-white py-4 px-6 w-full text-lg rounded-b-lg hover:bg-black duration-300">View Recipes</button>
                                 </Link>
                             </div>
                         </div>

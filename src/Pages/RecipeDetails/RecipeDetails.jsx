@@ -14,7 +14,7 @@ function RecipeDetails() {
     const { recipe_img, recipe, chef_name, description, likes, view } = RecipeDetails;
     return (
         <div className="container mx-auto px-4">
-            <img className="w-full h-[500px] object-cover rounded-lg " src={recipe_img} alt="" />
+            <img className="w-full h-[800px] object-cover rounded-lg " src={recipe_img} alt="" />
             <div className="mt-4 mb-6 flex justify-between items-center flex-col lg:flex-row">
                 <h1 className="text-3xl font-bold">Recipe: {recipe}</h1>
                 <p className="text-text-secondary text-lg font-semibold">Chef: {chef_name}</p>
