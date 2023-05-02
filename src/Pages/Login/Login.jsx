@@ -8,7 +8,7 @@ import { AuthContext } from '../../Contexts/AuthProviders';
 import './Login.css';
 
 function Login() {
-    const { login, loginWithGoogle } = useContext(AuthContext);
+    const { login, loginWithGoogle, loginWithGithub } = useContext(AuthContext);
     const [showPass, setShowPass] = useState(false);
     const handelLogin = (e) => {
         e.preventDefault();
@@ -82,7 +82,10 @@ function Login() {
                     >
                         <FcGoogle size={30} /> <p>Login With Google</p>
                     </div>
-                    <div className="w-full flex justify-center items-center gap-3 border border-slate-200 shadow h-11 rounded-lg hover:shadow-lg cursor-pointer">
+                    <div
+                        onClick={loginWithGithub}
+                        className="w-full flex justify-center items-center gap-3 border border-slate-200 shadow h-11 rounded-lg hover:shadow-lg cursor-pointer"
+                    >
                         <BsGithub size={30} /> <p>Login With Github</p>
                     </div>
                 </div>

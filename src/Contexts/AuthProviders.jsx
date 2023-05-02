@@ -1,5 +1,6 @@
 /* eslint-disable react/jsx-no-constructed-context-values */
 import {
+    GithubAuthProvider,
     GoogleAuthProvider,
     createUserWithEmailAndPassword,
     getAuth,
@@ -14,7 +15,8 @@ import app from '../Firebase/Firebase.config';
 
 const auth = getAuth(app);
 export const AuthContext = createContext(null);
-const GoogleProvider = new GoogleAuthProvider();
+const googleProvider = new GoogleAuthProvider();
+const githubProvider = new GithubAuthProvider();
 function AuthProviders({ children }) {
     const [user, setUser] = useState(null);
     const createUser = (email, password) => {
@@ -37,7 +39,17 @@ function AuthProviders({ children }) {
 
     // login with google
     const loginWithGoogle = () => {
-        signInWithPopup(auth, GoogleProvider)
+        signInWithPopup(auth, googleProvider)
+            .then((res) => {
+                console.log(res);
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    };
+    //  login with github
+    const loginWithGithub = () => {
+        signInWithPopup(auth, githubProvider)
             .then((res) => {
                 console.log(res);
             })
@@ -62,6 +74,7 @@ function AuthProviders({ children }) {
         user,
         updateUser,
         loginWithGoogle,
+        loginWithGithub,
         logout,
     };
 

@@ -10,7 +10,7 @@ import { AuthContext } from '../../Contexts/AuthProviders';
 function Register() {
     const [showPass, setShowPass] = useState(false);
     const [error, setError] = useState('');
-    const { createUser, updateUser, loginWithGoogle } = useContext(AuthContext);
+    const { createUser, updateUser, loginWithGoogle, loginWithGithub } = useContext(AuthContext);
     const handelRegister = (e) => {
         e.preventDefault();
         setError('');
@@ -128,7 +128,10 @@ function Register() {
                     >
                         <FcGoogle size={30} /> <p>Login With Google</p>
                     </div>
-                    <div className="w-full   flex justify-center items-center gap-3 border border-slate-200 shadow h-11 rounded-lg hover:shadow-lg cursor-pointer">
+                    <div
+                        onClick={loginWithGithub}
+                        className="w-full   flex justify-center items-center gap-3 border border-slate-200 shadow h-11 rounded-lg hover:shadow-lg cursor-pointer"
+                    >
                         <BsGithub size={30} /> <p>Login With Github</p>
                     </div>
                 </div>
