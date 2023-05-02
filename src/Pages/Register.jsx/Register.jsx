@@ -32,13 +32,14 @@ function Register() {
             .then((res) => {
                 console.log(res);
                 updateUser(name, photo)
-                    .then(() => console.log('userUtd'))
+                    .then(() => {})
                     .catch((err) => {
-                        console.log(err);
+                        setError(err.message);
                     });
             })
             .catch((err) => {
                 console.log(err);
+                setError(err.message);
             });
     };
 
@@ -56,6 +57,7 @@ function Register() {
                         className="outline-none box-shadow rounded-lg px-3 h-11 w-full my-2 focus:border-s-8 border-primary"
                         type="text"
                         placeholder="Enter Your Name"
+                        required
                     />
                     <label htmlFor="" className="text-lg">
                         Photo URL
@@ -74,12 +76,14 @@ function Register() {
                         className="outline-none box-shadow rounded-lg px-3 h-11 w-full my-2 focus:border-s-8 border-primary"
                         type="email"
                         placeholder="Enter Email"
+                        required
                     />
                     <label htmlFor="" className="text-lg">
                         Password
                     </label>
                     <input
                         name="password"
+                        required
                         className="outline-none box-shadow rounded-lg px-3 h-11 w-full my-2 focus:border-s-8 border-primary"
                         type={showPass ? 'text' : 'password'}
                         placeholder="Enter Password"
@@ -92,6 +96,7 @@ function Register() {
                         className="outline-none box-shadow rounded-lg px-3 h-11 w-full my-2 focus:border-s-8 border-primary"
                         type={showPass ? 'text' : 'password'}
                         placeholder="Enter Confirm Password"
+                        required
                     />
                     <div className="flex items-center mt-2">
                         <input

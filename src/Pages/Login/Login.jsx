@@ -3,12 +3,15 @@
 import React, { useContext, useRef, useState } from 'react';
 import { BsGithub } from 'react-icons/bs';
 import { FcGoogle } from 'react-icons/fc';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/AuthProviders';
 import './Login.css';
 
 function Login() {
     const { login, loginWithGoogle, loginWithGithub, resetPassword } = useContext(AuthContext);
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || '/';
     const [showPass, setShowPass] = useState(false);
     const [error, setError] = useState('');
     const emailRref = useRef();
@@ -19,12 +22,35 @@ function Login() {
         const email = form.email.value;
         const password = form.password.value;
         login(email, password)
-            .then((res) => {})
+            .then(() => {
+                navigate(from, { replace: true });
+            })
             .catch((err) => {
                 setError(err.message);
             });
     };
-    const handelPassReset = (e) => {
+
+    const loginByGoogle = () => {
+        loginWithGoogle()
+            .then(() => {
+                navigate(from, { replace: true });
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    };
+
+    const loginbyGithub = () => {
+        loginWithGithub()
+            .then(() => {
+                navigate(from, { replace: true });
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    };
+
+    const handelPassReset = () => {
         const email = emailRref.current.value;
         setError('');
         resetPassword(email)
@@ -51,6 +77,7 @@ function Login() {
                         className="outline-none box-shadow rounded-lg px-3 h-11 w-full my-2 focus:border-s-8 border-primary"
                         type="email"
                         placeholder="Enter Email"
+                        required
                     />
                     <label htmlFor="" className="text-lg">
                         Password
@@ -60,6 +87,7 @@ function Login() {
                         className="outline-none box-shadow rounded-lg px-3 h-11 w-full my-2 focus:border-s-8 border-primary"
                         type={showPass ? 'text' : 'password'}
                         placeholder="Enter Password"
+                        required
                     />
                     <div className="flex items-center mt-2">
                         <input
@@ -79,7 +107,7 @@ function Login() {
                     />
                 </form>
                 <button onClick={handelPassReset} className="hover:text-primary underline mb-3 ">
-                    Forgate Password?
+                    Forgat Password?
                 </button>
                 <p className="mb-6">
                     Don’t have an account?{' '}
@@ -94,13 +122,13 @@ function Login() {
                 </div>
                 <div className="flex items-center lg:flex-row flex-col gap-6 mt-5 mb-2">
                     <div
-                        onClick={loginWithGoogle}
+                        onClick={loginByGoogle}
                         className="w-full  flex justify-center items-center gap-3 border border-slate-200 shadow h-11 rounded-lg hover:shadow-lg cursor-pointer"
                     >
                         <FcGoogle size={30} /> <p>Login With Google</p>
                     </div>
                     <div
-                        onClick={loginWithGithub}
+                        onClick={loginbyGithub}
                         className="w-full flex justify-center items-center gap-3 border border-slate-200 shadow h-11 rounded-lg hover:shadow-lg cursor-pointer"
                     >
                         <BsGithub size={30} /> <p>Login With Github</p>

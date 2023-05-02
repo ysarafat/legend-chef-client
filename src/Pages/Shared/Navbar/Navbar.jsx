@@ -6,7 +6,6 @@ import { AuthContext } from '../../../Contexts/AuthProviders';
 function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
     const { user, logout } = useContext(AuthContext);
-    console.log(user);
 
     return (
         <nav className="flex justify-between items-center container px-4 mx-auto py-5 border-b border-slate-100">

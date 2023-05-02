@@ -5,6 +5,7 @@ import Home from '../Pages/Home/Home/Home';
 import Login from '../Pages/Login/Login';
 import RecipeDetails from '../Pages/RecipeDetails/RecipeDetails';
 import Register from '../Pages/Register.jsx/Register';
+import ProtectRoute from './ProtectRoute';
 
 const router = new createBrowserRouter([
     {
@@ -25,13 +26,21 @@ const router = new createBrowserRouter([
             },
             {
                 path: '/recipes/:id',
-                element: <ChefsRecipes />,
+                element: (
+                    <ProtectRoute>
+                        <ChefsRecipes />
+                    </ProtectRoute>
+                ),
                 loader: ({ params }) =>
                     fetch(`https://legend-chef-server.vercel.app/chef/${params.id}`),
             },
             {
                 path: '/recipe/:id',
-                element: <RecipeDetails />,
+                element: (
+                    <ProtectRoute>
+                        <RecipeDetails />
+                    </ProtectRoute>
+                ),
                 loader: ({ params }) =>
                     fetch(`https://legend-chef-server.vercel.app/recipe/${params.id}`),
             },
