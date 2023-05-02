@@ -30,6 +30,11 @@ function Register() {
         createUser(email, password)
             .then((res) => {
                 console.log(res);
+                updateUser(name, photo)
+                    .then(() => console.log('userUtd'))
+                    .catch((err) => {
+                        console.log(err);
+                    });
             })
             .catch((err) => {
                 console.log(err);

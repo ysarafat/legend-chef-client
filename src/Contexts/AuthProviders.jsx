@@ -47,6 +47,7 @@ function AuthProviders({ children }) {
         login,
         user,
         updateUser,
+
         logout,
     };
 
