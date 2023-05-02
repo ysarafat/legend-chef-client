@@ -20,7 +20,7 @@ function Banner() {
                     <Boutton>Contact Us</Boutton>
                 </div>
                 <div className="lg:pt-10 lg:w-1/2">
-                    <img className="h-[500px]" src="/public/chef.png" alt="" />
+                    <img className="h-[500px]" src="https://i.ibb.co/KF58XjB/chef.png" alt="" />
                 </div>
             </div>
         </section>
