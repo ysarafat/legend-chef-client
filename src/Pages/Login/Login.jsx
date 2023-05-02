@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useContext, useState } from 'react';
 import { BsGithub } from 'react-icons/bs';
@@ -7,7 +8,7 @@ import { AuthContext } from '../../Contexts/AuthProviders';
 import './Login.css';
 
 function Login() {
-    const { login } = useContext(AuthContext);
+    const { login, loginWithGoogle } = useContext(AuthContext);
     const [showPass, setShowPass] = useState(false);
     const handelLogin = (e) => {
         e.preventDefault();
@@ -75,7 +76,10 @@ function Login() {
                     <div className="border border-slate-200 w-[40%]" />
                 </div>
                 <div className="flex items-center lg:flex-row flex-col gap-6 mt-5 mb-2">
-                    <div className="w-full  flex justify-center items-center gap-3 border border-slate-200 shadow h-11 rounded-lg hover:shadow-lg cursor-pointer">
+                    <div
+                        onClick={loginWithGoogle}
+                        className="w-full  flex justify-center items-center gap-3 border border-slate-200 shadow h-11 rounded-lg hover:shadow-lg cursor-pointer"
+                    >
                         <FcGoogle size={30} /> <p>Login With Google</p>
                     </div>
                     <div className="w-full flex justify-center items-center gap-3 border border-slate-200 shadow h-11 rounded-lg hover:shadow-lg cursor-pointer">
