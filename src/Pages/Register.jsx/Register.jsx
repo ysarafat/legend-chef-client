@@ -63,7 +63,7 @@ function Register() {
                         </label>
                     </div>
                     <input
-                        className="h-11 w-full bg-primary rounded-lg my-5 text-lg text-white"
+                        className="h-11 w-full bg-primary hover:bg-black duration-300 cursor-pointer rounded-lg my-5 text-lg text-white"
                         type="submit"
                         value="Register"
                     />

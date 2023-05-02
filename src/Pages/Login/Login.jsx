@@ -9,7 +9,7 @@ function Login() {
     const [showPass, setShowPass] = useState(false);
 
     return (
-        <section className="container mx-auto px-4 flex justify-center items-center  min-h-[calc(100vh-600px)] mt-16">
+        <div className="container mx-auto px-4 flex justify-center items-center  min-h-[calc(100vh-600px)] mt-16 ">
             <div className=" border border-slate-200 p-5 w-full lg:w-[600px] rounded-lg">
                 <h1 className="text-2xl font-bold text-center mb-5">Login</h1>
                 <form className="flex flex-col">
@@ -41,7 +41,7 @@ function Login() {
                         </label>
                     </div>
                     <input
-                        className="h-11 w-full bg-primary rounded-lg my-5 text-lg text-white"
+                        className="h-11 w-full bg-primary hover:bg-black duration-300 cursor-pointer rounded-lg my-5 text-lg text-white"
                         type="submit"
                         value="Login"
                     />
@@ -66,7 +66,7 @@ function Login() {
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
     );
 }
 
