@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import React, { useContext, useState } from 'react';
+import React, { useContext, useRef, useState } from 'react';
 import { BsGithub } from 'react-icons/bs';
 import { FcGoogle } from 'react-icons/fc';
 import { Link } from 'react-router-dom';
@@ -8,19 +8,31 @@ import { AuthContext } from '../../Contexts/AuthProviders';
 import './Login.css';
 
 function Login() {
-    const { login, loginWithGoogle, loginWithGithub } = useContext(AuthContext);
+    const { login, loginWithGoogle, loginWithGithub, resetPassword } = useContext(AuthContext);
     const [showPass, setShowPass] = useState(false);
+    const [error, setError] = useState('');
+    const emailRref = useRef();
     const handelLogin = (e) => {
         e.preventDefault();
+        setError('');
         const form = e.target;
         const email = form.email.value;
         const password = form.password.value;
         login(email, password)
-            .then((res) => {
-                console.log(res);
+            .then((res) => {})
+            .catch((err) => {
+                setError(err.message);
+            });
+    };
+    const handelPassReset = (e) => {
+        const email = emailRref.current.value;
+        setError('');
+        resetPassword(email)
+            .then(() => {
+                alert('Please chaek your email');
             })
             .catch((err) => {
-                console.log(err);
+                setError(err.message);
             });
     };
 
@@ -28,12 +40,14 @@ function Login() {
         <div className="container mx-auto px-4 flex justify-center items-center  min-h-[calc(100vh-600px)] mt-16 ">
             <div className=" border border-slate-200 p-5 w-full lg:w-[600px] rounded-lg">
                 <h1 className="text-2xl font-bold text-center mb-5">Login</h1>
+                <p className="my-4 text-red-500">{error}</p>
                 <form onSubmit={handelLogin} className="flex flex-col">
                     <label htmlFor="" className="text-lg">
                         Email Address
                     </label>
                     <input
                         name="email"
+                        ref={emailRref}
                         className="outline-none box-shadow rounded-lg px-3 h-11 w-full my-2 focus:border-s-8 border-primary"
                         type="email"
                         placeholder="Enter Email"
@@ -64,6 +78,9 @@ function Login() {
                         value="Login"
                     />
                 </form>
+                <button onClick={handelPassReset} className="hover:text-primary underline mb-3 ">
+                    Forgate Password?
+                </button>
                 <p className="mb-6">
                     Don’t have an account?{' '}
                     <Link className="text-primary underline " to="/register">
