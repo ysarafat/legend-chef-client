@@ -4,12 +4,15 @@
 import React, { useContext, useState } from 'react';
 import { BsGithub } from 'react-icons/bs';
 import { FcGoogle } from 'react-icons/fc';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/AuthProviders';
 
 function Register() {
     const [showPass, setShowPass] = useState(false);
     const [error, setError] = useState('');
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || '/';
     const { createUser, updateUser, loginWithGoogle, loginWithGithub } = useContext(AuthContext);
     const handelRegister = (e) => {
         e.preventDefault();
@@ -32,7 +35,9 @@ function Register() {
             .then((res) => {
                 console.log(res);
                 updateUser(name, photo)
-                    .then(() => {})
+                    .then(() => {
+                        navigate(from, { replace: true });
+                    })
                     .catch((err) => {
                         setError(err.message);
                     });
@@ -40,6 +45,25 @@ function Register() {
             .catch((err) => {
                 console.log(err);
                 setError(err.message);
+            });
+    };
+    const loginByGoogle = () => {
+        loginWithGoogle()
+            .then(() => {
+                navigate(from, { replace: true });
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    };
+
+    const loginbyGithub = () => {
+        loginWithGithub()
+            .then(() => {
+                navigate(from, { replace: true });
+            })
+            .catch((err) => {
+                console.log(err);
             });
     };
 
@@ -128,13 +152,13 @@ function Register() {
                 </div>
                 <div className="flex items-center lg:flex-row flex-col gap-6 mt-5 mb-2">
                     <div
-                        onClick={loginWithGoogle}
+                        onClick={loginByGoogle}
                         className="w-full   flex justify-center items-center  gap-3 border border-slate-200 shadow h-11 rounded-lg hover:shadow-lg cursor-pointer"
                     >
                         <FcGoogle size={30} /> <p>Login With Google</p>
                     </div>
                     <div
-                        onClick={loginWithGithub}
+                        onClick={loginbyGithub}
                         className="w-full   flex justify-center items-center gap-3 border border-slate-200 shadow h-11 rounded-lg hover:shadow-lg cursor-pointer"
                     >
                         <BsGithub size={30} /> <p>Login With Github</p>

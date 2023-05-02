@@ -1,10 +1,11 @@
 import { createBrowserRouter } from 'react-router-dom';
 import Main from '../Layouts/Main';
+import Blog from '../Pages/Blog/Blog';
 import ChefsRecipes from '../Pages/ChefsRecipes/ChefsRecipes';
 import Home from '../Pages/Home/Home/Home';
 import Login from '../Pages/Login/Login';
 import RecipeDetails from '../Pages/RecipeDetails/RecipeDetails';
-import Register from '../Pages/Register.jsx/Register';
+import Register from '../Pages/Register/Register';
 import ProtectRoute from './ProtectRoute';
 
 const router = new createBrowserRouter([
@@ -44,7 +45,10 @@ const router = new createBrowserRouter([
                 loader: ({ params }) =>
                     fetch(`https://legend-chef-server.vercel.app/recipe/${params.id}`),
             },
-            {},
+            {
+                path: '/blog',
+                element: <Blog />,
+            },
         ],
     },
 ]);

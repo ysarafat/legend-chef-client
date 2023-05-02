@@ -1,6 +1,6 @@
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/solid';
 import React, { useContext, useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { AuthContext } from '../../../Contexts/AuthProviders';
 
 function Navbar() {
@@ -10,7 +10,9 @@ function Navbar() {
     return (
         <nav className="flex justify-between items-center container px-4 mx-auto py-5 border-b border-slate-100">
             <div>
-                <h1 className="text-4xl font-bold ">Legend Chef</h1>
+                <Link>
+                    <h1 className="text-4xl font-bold ">Legend Chef</h1>
+                </Link>
             </div>
             <ul className="lg:flex items-center gap-4 text-base hidden">
                 <li>
@@ -25,12 +27,12 @@ function Navbar() {
                 </li>
                 <li>
                     <NavLink
-                        to="/recipes"
+                        to="/blog"
                         className={({ isActive }) =>
                             isActive ? 'text-primary' : 'text-[#161616] hover:text-red-500'
                         }
                     >
-                        Recipes
+                        Blog
                     </NavLink>
                 </li>
 
@@ -48,12 +50,7 @@ function Navbar() {
                 )}
                 <li>
                     {user ? (
-                        <NavLink
-                            onClick={logout}
-                            className={({ isActive }) =>
-                                isActive ? 'text-primary' : 'text-[#161616] hover:text-red-500'
-                            }
-                        >
+                        <NavLink onClick={logout} className="text-[#161616] hover:text-red-500">
                             Logout
                         </NavLink>
                     ) : (
@@ -110,34 +107,34 @@ function Navbar() {
                         </li>
                         <li>
                             <NavLink
-                                to="/recipes"
+                                to="/blog"
                                 className={({ isActive }) =>
                                     isActive ? 'text-primary' : 'text-[#161616] hover:text-red-500'
                                 }
                             >
-                                Recipes
+                                Blog
                             </NavLink>
                         </li>
 
-                        <li>
-                            <NavLink
-                                to="/register"
-                                className={({ isActive }) =>
-                                    isActive ? 'text-primary' : 'text-[#161616] hover:text-red-500'
-                                }
-                            >
-                                Register
-                            </NavLink>
-                        </li>
-                        <li>
-                            {user ? (
+                        {!user && (
+                            <li>
                                 <NavLink
-                                    onClick={logout}
+                                    to="/register"
                                     className={({ isActive }) =>
                                         isActive
                                             ? 'text-primary'
                                             : 'text-[#161616] hover:text-red-500'
                                     }
+                                >
+                                    Register
+                                </NavLink>
+                            </li>
+                        )}
+                        <li>
+                            {user ? (
+                                <NavLink
+                                    onClick={logout}
+                                    className="text-[#161616] hover:text-red-500"
                                 >
                                     Logout
                                 </NavLink>
