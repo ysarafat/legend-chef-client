@@ -7,7 +7,9 @@ function Main() {
     return (
         <div>
             <Navbar />
-            <Outlet />
+            <section className='min-h-[calc(100vh-419px)]'>
+                <Outlet />
+            </section>
             <Footer />
         </div>
     );

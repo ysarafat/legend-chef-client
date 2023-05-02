@@ -28,7 +28,7 @@ module.exports = {
         'new-cap': 'off',
         indent: 0,
         'linebreak-style': 0,
-        camelcase: '0',
+        // camelcase: '0',
         'react/prop-types': 0,
         'jsx-a11y/click-events-have-key-events': 0,
         'no-shadow': 'off',

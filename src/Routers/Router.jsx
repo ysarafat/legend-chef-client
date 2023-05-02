@@ -26,12 +26,14 @@ const router = new createBrowserRouter([
             {
                 path: '/recipes/:id',
                 element: <ChefsRecipes />,
-                loader: ({ params }) => fetch(`https://legend-chef-server.vercel.app/chef/${params.id}`),
+                loader: ({ params }) =>
+                    fetch(`https://legend-chef-server.vercel.app/chef/${params.id}`),
             },
             {
                 path: '/recipe/:id',
                 element: <RecipeDetails />,
-                loader: ({ params }) => fetch(`https://legend-chef-server.vercel.app/recipe/${params.id}`),
+                loader: ({ params }) =>
+                    fetch(`https://legend-chef-server.vercel.app/recipe/${params.id}`),
             },
             {},
         ],

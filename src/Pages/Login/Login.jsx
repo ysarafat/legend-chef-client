@@ -1,7 +1,73 @@
-import React from 'react';
+/* eslint-disable jsx-a11y/label-has-associated-control */
+import React, { useState } from 'react';
+import { BsGithub } from 'react-icons/bs';
+import { FcGoogle } from 'react-icons/fc';
+import { Link } from 'react-router-dom';
+import './Login.css';
 
 function Login() {
-    return <div>this is login page</div>;
+    const [showPass, setShowPass] = useState(false);
+
+    return (
+        <section className="container mx-auto px-4 flex justify-center items-center h-screen">
+            <div className=" border border-slate-200 p-5 w-full lg:w-[600px] rounded-lg">
+                <h1 className="text-2xl font-bold text-center mb-5">Login</h1>
+                <form className="flex flex-col">
+                    <label htmlFor="" className="text-lg">
+                        Email Address
+                    </label>
+                    <input
+                        className="outline-none box-shadow rounded-lg px-3 h-11 w-full my-2 focus:border-s-8 border-primary"
+                        type="email"
+                        placeholder="Enter Email"
+                    />
+                    <label htmlFor="" className="text-lg">
+                        Password
+                    </label>
+                    <input
+                        className="outline-none box-shadow rounded-lg px-3 h-11 w-full my-2 focus:border-s-8 border-primary"
+                        type={showPass ? 'text' : 'password'}
+                        placeholder="Enter Password"
+                    />
+                    <div className="flex items-center mt-2">
+                        <input
+                            onClick={() => setShowPass(!showPass)}
+                            type="checkbox"
+                            name="check"
+                            className="w-4 h-4 text-primary bg-gray-100 border-gray-300 rounded focus:text-primary dark:text-primary"
+                        />
+                        <label className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                            {showPass ? 'Hide Password' : 'Show Password'}{' '}
+                        </label>
+                    </div>
+                    <input
+                        className="h-11 w-full bg-primary rounded-lg my-5 text-lg text-white"
+                        type="submit"
+                        value="Login"
+                    />
+                </form>
+                <p className="mb-6">
+                    Don’t have an account?{' '}
+                    <Link className="text-primary underline " to="/register">
+                        Create an account
+                    </Link>
+                </p>
+                <div className="flex justify-around items-center text-lg">
+                    <div className="border border-slate-200 w-[40%]" />
+                    or
+                    <div className="border border-slate-200 w-[40%]" />
+                </div>
+                <div className="flex gap-6 mt-5 mb-2">
+                    <div className="w-[50%]  flex justify-center items-center gap-3 border border-slate-200 shadow h-11 rounded-lg hover:shadow-lg cursor-pointer">
+                        <FcGoogle size={30} /> <p>Login With Google</p>
+                    </div>
+                    <div className="w-[50%]  flex justify-center items-center gap-3 border border-slate-200 shadow h-11 rounded-lg hover:shadow-lg cursor-pointer">
+                        <BsGithub size={30} /> <p>Login With Github</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    );
 }
 
 export default Login;

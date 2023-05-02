@@ -12,7 +12,7 @@ function Home() {
             .then((res) => res.json())
             .then((data) => setChef(data));
     }, []);
-    console.log(chef);
+
     return (
         <div>
             <Banner />

@@ -1,9 +1,12 @@
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/solid';
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import { AuthContext } from '../../../Contexts/AuthProviders';
 
 function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
+    const {x} = useContext(AuthContext)
+    console.log(x);
     return (
         <nav className="flex justify-between items-center container px-4 mx-auto py-5 border-b border-slate-100">
             <div>
