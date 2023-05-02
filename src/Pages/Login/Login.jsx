@@ -9,7 +9,7 @@ function Login() {
     const [showPass, setShowPass] = useState(false);
 
     return (
-        <section className="container mx-auto px-4 flex justify-center items-center h-screen">
+        <section className="container mx-auto px-4 flex justify-center items-center  min-h-[calc(100vh-600px)] mt-16">
             <div className=" border border-slate-200 p-5 w-full lg:w-[600px] rounded-lg">
                 <h1 className="text-2xl font-bold text-center mb-5">Login</h1>
                 <form className="flex flex-col">
@@ -57,11 +57,11 @@ function Login() {
                     or
                     <div className="border border-slate-200 w-[40%]" />
                 </div>
-                <div className="flex gap-6 mt-5 mb-2">
-                    <div className="w-[50%]  flex justify-center items-center gap-3 border border-slate-200 shadow h-11 rounded-lg hover:shadow-lg cursor-pointer">
+                <div className="flex items-center lg:flex-row flex-col gap-6 mt-5 mb-2">
+                    <div className="w-full  flex justify-center items-center gap-3 border border-slate-200 shadow h-11 rounded-lg hover:shadow-lg cursor-pointer">
                         <FcGoogle size={30} /> <p>Login With Google</p>
                     </div>
-                    <div className="w-[50%]  flex justify-center items-center gap-3 border border-slate-200 shadow h-11 rounded-lg hover:shadow-lg cursor-pointer">
+                    <div className="w-full flex justify-center items-center gap-3 border border-slate-200 shadow h-11 rounded-lg hover:shadow-lg cursor-pointer">
                         <BsGithub size={30} /> <p>Login With Github</p>
                     </div>
                 </div>
