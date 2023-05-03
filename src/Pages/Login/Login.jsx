@@ -67,7 +67,7 @@ function Login() {
         behavior: 'instant',
     });
     return (
-        <div className="container mx-auto px-4 flex justify-center items-center  min-h-[calc(100vh-600px)] mt-16 ">
+        <div className="container mx-auto px-4 flex justify-center items-center  min-h-[calc(100vh-600px)] my-16 ">
             <div className=" border border-slate-200 p-5 w-full lg:w-[600px] rounded-lg">
                 <h1 className="text-2xl font-bold text-center mb-5">Login</h1>
                 <p className="my-4 text-red-500">{error}</p>

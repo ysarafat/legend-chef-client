@@ -17,7 +17,7 @@ function RecipeDetails() {
 
     return (
         <LazyLoad>
-            <div className="recipe container mx-auto px-4">
+            <div className="recipe container mx-auto px-4 mb-16">
                 <img
                     className="w-full lg:h-[800px] object-cover rounded-lg "
                     src={recipe_img}

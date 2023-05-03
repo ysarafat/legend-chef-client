@@ -31,7 +31,7 @@ function ChefsRecipes() {
             <LazyLoad>
                 <div
                     style={style}
-                    className="bg-no-repeat w-full h-[500px] lg:h-[600px] bg-top bg-cover"
+                    className="bg-no-repeat w-full h-[500px] lg:h-[600px] bg-top bg-cover "
                 >
                     <div className="container mx-auto px-4 flex flex-col gap-4 justify-center items-center h-full">
                         <h1 className="text-white text-3xl lg:text-6xl font-extrabold">{name}</h1>
@@ -48,7 +48,7 @@ function ChefsRecipes() {
                 </div>
             </LazyLoad>
 
-            <div className="recipe  container mx-auto px-4 flex flex-wrap gap-6">
+            <div className="mt-16 container mx-auto px-4 flex flex-wrap gap-6 mb-16">
                 {recipes?.map((recipe) => (
                     <Recipes key={recipe.id} recipes={recipe} />
                 ))}

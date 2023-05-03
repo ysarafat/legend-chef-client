@@ -5,6 +5,8 @@ import LazyLoad from 'react-lazy-load';
 import { Link } from 'react-router-dom';
 import Spinner from '../../Shared/Spinner/Spinner';
 import Banner from '../Banner/Banner';
+import Newsletter from '../Newsletter/Newsletter';
+import Offer from '../Offer/Offer';
 import './Home.css';
 
 function Home() {
@@ -83,6 +85,8 @@ function Home() {
                     </LazyLoad>
                 )}
             </div>
+            <Offer />
+            <Newsletter />
         </div>
     );
 }

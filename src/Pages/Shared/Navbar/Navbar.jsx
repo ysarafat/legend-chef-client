@@ -11,7 +11,9 @@ function Navbar() {
         <nav className="flex justify-between items-center container px-4 mx-auto py-5 border-b border-slate-100">
             <div>
                 <Link>
-                    <h1 className="text-4xl font-bold ">Legend Chef</h1>
+                    <h1 className="text-3xl font-bold ">
+                        Legend <span className="text-primary">Chef</span>
+                    </h1>
                 </Link>
             </div>
             <ul className="lg:flex items-center gap-4 text-base hidden">

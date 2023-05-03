@@ -1,0 +1,11 @@
+.offer_bg {
+  background-image: linear-gradient(
+      360deg,
+      hsla(0, 0%, 0%, 0.301) 0%,
+      rgba(0, 0, 0, 0.733) 100%
+    ),
+    url("https://img.freepik.com/free-photo/young-caucasian-cook-girl-chef-uniform-stands-looks-white-wall-pink-with-copy-space_141793-62773.jpg?w=1380&t=st=1683133491~exp=1683134091~hmac=ae8718109721a8468c85b551face58b53c04e4ed8499b7f9c19d4520388e2a03");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
