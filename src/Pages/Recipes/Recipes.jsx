@@ -16,7 +16,11 @@ function Recipes({ recipes }) {
         toast.success('Recipe has been Favorite successfully');
     };
     const fixdScroll = () => {
-        window.scrollTo(0, 0);
+        window.scrollTo({
+            top: 0,
+            left: 0,
+            behavior: 'instant',
+        });
     };
     return (
         <section className="w-full lg:w-[32%] card-container">
@@ -69,7 +73,7 @@ function Recipes({ recipes }) {
                             disabled={disabled}
                             className="bg-primary disabled:bg-gray-400  hover:bg-black duration-300 w-full px-2 py-2 tex-lg text-white rounded-b-lg"
                         >
-                            Add Favorite
+                            {disabled ? 'Already Add To Favorite' : 'Add To Favorite'}
                         </button>
                     </div>
                 </div>
