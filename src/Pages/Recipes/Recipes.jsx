@@ -1,13 +1,19 @@
 /* eslint-disable camelcase */
 import { Rating } from '@smastrom/react-rating';
 import '@smastrom/react-rating/style.css';
-import React from 'react';
+import React, { useState } from 'react';
+import toast, { Toaster } from 'react-hot-toast';
 import { BsFillHeartFill } from 'react-icons/bs';
 import { Link } from 'react-router-dom';
 import './Recipes.css';
 
 function Recipes({ recipes }) {
-    const { id, recipe, recipe_img, short_des, likes, ingredients, rating } = recipes;
+    const [disabled, setDisabled] = useState(false);
+    const { id, recipe, recipe_img, likes, ingredients, rating, description } = recipes;
+    const handelFvrBtn = () => {
+        setDisabled(true);
+        toast.success('Recipe has been Favorite successfully');
+    };
 
     return (
         <section className="w-full lg:w-[32%] card-container">
@@ -20,13 +26,24 @@ function Recipes({ recipes }) {
                 <div className="px-4 flex-grow my-3">
                     <div>
                         <h1 className="lg:text-2xl text-xl font-bold">{recipe}</h1>
-                        <p className="mt-2 text-text-secondary">{short_des}</p>
-                        <div className="pt-3 pb-5">
-                            <h4 className="text-xl">Ingredients: </h4>
+                        <div className="py-3 ">
+                            <h4 className="text-lg">Ingredients: </h4>
                             {ingredients?.map((item) => (
-                                <li>{item}</li>
+                                <li className="text-text-secondary">{item}</li>
                             ))}
                         </div>
+
+                        <p className="pb-2 text-text-secondary ">
+                            <h4 className="text-lg text-black">Cooking Method: </h4>
+                            {description.slice(0, 150)}...
+                            <Link
+                                className="text-primary font-semibold hover:text-red-500 duration-300 "
+                                to={`/recipe/${id}`}
+                            >
+                                Read More
+                            </Link>
+                        </p>
+
                         <div className="flex items-center justify-between mt-auto text-lg">
                             <span className="flex items-center  gap-2 text-text-secondary">
                                 <BsFillHeartFill style={{ fontSize: 22, color: 'red' }} /> {likes}
@@ -41,17 +58,16 @@ function Recipes({ recipes }) {
                 </div>
 
                 <div className="flex items-center text-lg  text-center ">
-                    <button className="bg-primary  hover:bg-green-700 duration-300 w-full px-2 py-2 tex-lg rounded-sm text-white rounded-bl-lg">
+                    <button
+                        onClick={handelFvrBtn}
+                        disabled={disabled}
+                        className="bg-primary disabled:bg-gray-400  hover:bg-black duration-300 w-full px-2 py-2 tex-lg text-white rounded-b-lg"
+                    >
                         Add Favorite
                     </button>
-                    <Link
-                        className=" bg-black hover:bg-slate-700 w-full px-2 py-2 rounded-sm text-white rounded-br-lg"
-                        to={`/recipe/${id}`}
-                    >
-                        <button className="">Recipe Details</button>
-                    </Link>
                 </div>
             </div>
+            <Toaster position="top-center" reverseOrder={false} />
         </section>
     );
 }
