@@ -2,6 +2,7 @@
 /* eslint-disable consistent-return */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useContext, useState } from 'react';
+import { toast } from 'react-hot-toast';
 import { BsGithub } from 'react-icons/bs';
 import { FcGoogle } from 'react-icons/fc';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
@@ -36,6 +37,7 @@ function Register() {
                 console.log(res);
                 updateUser(name, photo)
                     .then(() => {
+                        toast.success('Registration successfully');
                         navigate(from, { replace: true });
                     })
                     .catch((err) => {
@@ -50,6 +52,7 @@ function Register() {
     const loginByGoogle = () => {
         loginWithGoogle()
             .then(() => {
+                toast.success('Login successfully');
                 navigate(from, { replace: true });
             })
             .catch((err) => {
@@ -60,6 +63,7 @@ function Register() {
     const loginbyGithub = () => {
         loginWithGithub()
             .then(() => {
+                toast.success('Login successfully');
                 navigate(from, { replace: true });
             })
             .catch((err) => {
@@ -131,7 +135,7 @@ function Register() {
                             onClick={() => setShowPass(!showPass)}
                             type="checkbox"
                             name="check"
-                            className="w-4 h-4 text-primary bg-gray-100 border-gray-300 rounded focus:text-primary dark:text-primary"
+                            className="w-4 h-4  text-primary bg-gray-100 border-gray-300 rounded focus:text-primary dark:text-primary"
                         />
                         <label className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">
                             {showPass ? 'Hide Password' : 'Show Password'}{' '}

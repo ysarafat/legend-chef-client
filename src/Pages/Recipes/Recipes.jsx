@@ -26,8 +26,8 @@ function Recipes({ recipes }) {
 
     return (
         <section className="w-full lg:w-[32%] card-container">
-            <LazyLoad height={762}>
-                <div className="recipe card border flex flex-col border-slate-200 rounded-lg hover:shadow">
+            <LazyLoad>
+                <div className="border card flex flex-col border-slate-200 rounded-lg hover:shadow">
                     <div>
                         <div className="w-full lg:h-[300px] object-cover ">
                             <img className=" rounded-t-lg h-full w-full" src={recipe_img} alt="" />
@@ -55,7 +55,7 @@ function Recipes({ recipes }) {
                                 </Link>
                             </p>
 
-                            <div className="flex items-center justify-between mt-auto text-lg">
+                            <div className="flex items-center justify-between mt-auto pt-4 pb-2 text-lg">
                                 <span className="flex items-center  gap-2 text-text-secondary">
                                     <BsFillHeartFill style={{ fontSize: 22, color: 'red' }} />{' '}
                                     {likes}

@@ -17,7 +17,7 @@ function Newsletter() {
             </p>
             <form className="flex flex-col mx-auto  lg:w-1/3">
                 <input
-                    className="h-11 px-3 outline-none w-full rounded-lg shadow-lg"
+                    className="h-11 px-3 outline-none w-full rounded-lg shadow-lg focus:border-s-8 border-primary"
                     placeholder="Your e-mail address"
                     type="email"
                     required

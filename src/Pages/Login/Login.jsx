@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useContext, useRef, useState } from 'react';
+import { toast } from 'react-hot-toast';
 import { BsGithub } from 'react-icons/bs';
 import { FcGoogle } from 'react-icons/fc';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
@@ -23,6 +24,7 @@ function Login() {
         const password = form.password.value;
         login(email, password)
             .then(() => {
+                toast.success('Login successfully');
                 navigate(from, { replace: true });
             })
             .catch((err) => {
@@ -33,6 +35,7 @@ function Login() {
     const loginByGoogle = () => {
         loginWithGoogle()
             .then(() => {
+                toast.success('Login successfully');
                 navigate(from, { replace: true });
             })
             .catch((err) => {
@@ -43,6 +46,7 @@ function Login() {
     const loginbyGithub = () => {
         loginWithGithub()
             .then(() => {
+                toast.success('Login successfully');
                 navigate(from, { replace: true });
             })
             .catch((err) => {

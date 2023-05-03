@@ -1,10 +1,20 @@
 import React from 'react';
+import { BallTriangle } from 'react-loader-spinner';
 
 function Spinner() {
     return (
         <div>
             <div className=" flex justify-center items-center min-h-screen">
-                <div className="border-8 border-dashed animate-spin  border-primary h-24 w-24 rounded-full" />
+                <BallTriangle
+                    height={100}
+                    width={100}
+                    radius={5}
+                    color="#4DBF7B"
+                    ariaLabel="ball-triangle-loading"
+                    wrapperClass={{}}
+                    wrapperStyle=""
+                    visible
+                />
             </div>
         </div>
     );

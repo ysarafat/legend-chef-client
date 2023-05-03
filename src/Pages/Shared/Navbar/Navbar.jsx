@@ -1,11 +1,17 @@
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/solid';
 import React, { useContext, useState } from 'react';
+import { toast } from 'react-hot-toast';
 import { Link, NavLink } from 'react-router-dom';
 import { AuthContext } from '../../../Contexts/AuthProviders';
 
 function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
     const { user, logout } = useContext(AuthContext);
+    const handelLogout = () => {
+        logout().then(() => {
+            toast.success('Logout successfully');
+        });
+    };
 
     return (
         <nav className="flex justify-between items-center container px-4 mx-auto py-5 border-b border-slate-100">
@@ -52,7 +58,10 @@ function Navbar() {
                 )}
                 <li>
                     {user ? (
-                        <NavLink onClick={logout} className="text-[#161616] hover:text-red-500">
+                        <NavLink
+                            onClick={handelLogout}
+                            className="text-[#161616] hover:text-red-500"
+                        >
                             Logout
                         </NavLink>
                     ) : (

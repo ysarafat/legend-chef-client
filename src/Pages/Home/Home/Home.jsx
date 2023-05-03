@@ -35,7 +35,10 @@ function Home() {
                 <h1 className="text-4xl font-bold text-text-primary text-center uppercase">
                     Legend Chef
                 </h1>
-                <div className="border-4 border-slate-200 w-28 mx-auto rounded-lg mt-2 mb-5" />
+                <div className="border-4 border-slate-200 w-28 mx-auto rounded-lg my-2 " />
+                <p className="lg:w-1/3 mx-auto text-center mb-5 text-text-secondary text-lg ">
+                    Here are the top legendary chefs of USA who share their recipes
+                </p>
                 {loading ? (
                     <Spinner />
                 ) : (
@@ -84,8 +87,8 @@ function Home() {
                         </div>
                     </LazyLoad>
                 )}
+                <Offer />
             </div>
-            <Offer />
             <Newsletter />
         </div>
     );
