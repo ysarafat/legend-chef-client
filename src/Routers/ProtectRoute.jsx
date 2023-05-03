@@ -6,7 +6,7 @@ import Spinner from '../Pages/Shared/Spinner/Spinner';
 function ProtectRoute({ children }) {
     const { user, loading } = useContext(AuthContext);
     const location = useLocation();
-    console.log(location);
+
     if (loading) {
         return <Spinner />;
     }
