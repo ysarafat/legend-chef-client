@@ -66,7 +66,11 @@ function Register() {
                 console.log(err);
             });
     };
-
+    window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: 'instant',
+    });
     return (
         <section className="container mx-auto px-4 flex justify-center items-center min-h-[calc(100vh-600px)] mt-16">
             <div className=" border border-slate-200 p-5 w-full lg:w-[600px] rounded-lg">

@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable eqeqeq */
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable camelcase */
@@ -24,6 +25,7 @@ function ChefsRecipes() {
     const style = {
         backgroundImage: `linear-gradient(360deg, hsla(0, 0%, 0%, 0.485) 0%, rgba(0, 0, 0, 0.485) 100%), url(${imageUrl})`,
     };
+
     return (
         <>
             <LazyLoad>
@@ -45,7 +47,8 @@ function ChefsRecipes() {
                     </div>
                 </div>
             </LazyLoad>
-            <div className="mt-16 container mx-auto px-4 flex flex-wrap gap-6">
+
+            <div className="recipe  container mx-auto px-4 flex flex-wrap gap-6">
                 {recipes?.map((recipe) => (
                     <Recipes key={recipe.id} recipes={recipe} />
                 ))}

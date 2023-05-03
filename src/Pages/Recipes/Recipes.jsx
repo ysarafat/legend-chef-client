@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable camelcase */
 import { Rating } from '@smastrom/react-rating';
 import '@smastrom/react-rating/style.css';
@@ -22,10 +23,11 @@ function Recipes({ recipes }) {
             behavior: 'instant',
         });
     };
+
     return (
         <section className="w-full lg:w-[32%] card-container">
             <LazyLoad height={762}>
-                <div className="card border flex flex-col border-slate-200 rounded-lg hover:shadow">
+                <div className="recipe card border flex flex-col border-slate-200 rounded-lg hover:shadow">
                     <div>
                         <div className="w-full lg:h-[300px] object-cover ">
                             <img className=" rounded-t-lg h-full w-full" src={recipe_img} alt="" />

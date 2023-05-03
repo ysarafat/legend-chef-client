@@ -14,9 +14,10 @@ import { useLoaderData } from 'react-router-dom';
 function RecipeDetails() {
     const RecipeDetails = useLoaderData();
     const { recipe_img, recipe, chef_name, description, likes, view, ingredients } = RecipeDetails;
+
     return (
         <LazyLoad>
-            <div className="container mx-auto px-4">
+            <div className="recipe container mx-auto px-4">
                 <img
                     className="w-full lg:h-[800px] object-cover rounded-lg "
                     src={recipe_img}
