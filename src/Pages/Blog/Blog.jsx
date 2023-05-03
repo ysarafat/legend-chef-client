@@ -1,24 +1,26 @@
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
 import React, { useEffect, useState } from 'react';
+import { toast } from 'react-hot-toast';
 import { ImDownload3 } from 'react-icons/im';
 import { useLoaderData } from 'react-router-dom';
 import Spinner from '../Shared/Spinner/Spinner';
 
 function Blog() {
     const [loading, setLoading] = useState(true);
+
     const blogs = useLoaderData();
     console.log(blogs);
     const downloadPDF = () => {
         const capture = document.querySelector('.blog-down');
-
         html2canvas(capture).then((canvas) => {
             const imgData = canvas.toDataURL('img/png');
             const doc = new jsPDF('l', 'mm', 'a4');
             const componentWidth = doc.internal.pageSize.getWidth();
             const componentHeight = doc.internal.pageSize.getHeight();
             doc.addImage(imgData, 'PNG', 0, 0, componentWidth, componentHeight);
-            doc.save('recipe.pdf');
+            toast.success('Download Complete');
+            doc.save('legend-blog.pdf');
         });
     };
     useEffect(() => {
