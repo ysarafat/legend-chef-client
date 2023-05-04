@@ -18,6 +18,7 @@ const router = new createBrowserRouter([
             {
                 path: '/',
                 element: <Home />,
+                loader: () => fetch('https://legend-chef-server.vercel.app/chef'),
             },
             {
                 path: '/login',

@@ -94,11 +94,7 @@ function Navbar() {
                 </button>
 
                 {isOpen && (
-                    // eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions
-                    <ul
-                        onClick={() => setIsOpen(!isOpen)}
-                        className="absolute  duration-300 delay-500	 top-[79.34px] left-0 right-0 min-h-[calc(100vh-80px)]  w-full px-5 py-5 z-10 bg-[#C5EAD4] flex justify-center items-center flex-col gap-5  text-lg"
-                    >
+                    <ul className="absolute  duration-300 delay-500	 top-[79.34px] left-0 right-0 min-h-[calc(100vh-81px)]  w-full px-5 py-5 z-10 bg-[#C5EAD4] flex justify-center items-center flex-col gap-5  text-lg">
                         {user && (
                             <img
                                 className="w-10 h-10 rounded-full border-2 border-primary"
@@ -106,7 +102,7 @@ function Navbar() {
                                 alt=""
                             />
                         )}
-                        <li>
+                        <li onClick={() => setIsOpen(!isOpen)}>
                             <NavLink
                                 to="/"
                                 className={({ isActive }) =>
@@ -116,7 +112,7 @@ function Navbar() {
                                 Home
                             </NavLink>
                         </li>
-                        <li>
+                        <li onClick={() => setIsOpen(!isOpen)}>
                             <NavLink
                                 to="/blog"
                                 className={({ isActive }) =>
@@ -128,7 +124,7 @@ function Navbar() {
                         </li>
 
                         {!user && (
-                            <li>
+                            <li onClick={() => setIsOpen(!isOpen)}>
                                 <NavLink
                                     to="/register"
                                     className={({ isActive }) =>
@@ -141,7 +137,7 @@ function Navbar() {
                                 </NavLink>
                             </li>
                         )}
-                        <li>
+                        <li onClick={() => setIsOpen(!isOpen)}>
                             {user ? (
                                 <NavLink
                                     onClick={logout}

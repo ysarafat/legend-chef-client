@@ -9,7 +9,7 @@ function Newsletter() {
     };
     const { View } = useLottie(options);
     return (
-        <div className="mt-16 bg-slate-200 py-5 px-4 text-center">
+        <div className="my-12 bg-slate-200 py-5 px-4 text-center rounded-lg">
             <div className="h-56 w-56 mx-auto">{View}</div>
             <h1 className="text-4xl font-bold ">Get Newsletter</h1>
             <p className="text-center text-text-secondary text-lg mt-2 mb-4">

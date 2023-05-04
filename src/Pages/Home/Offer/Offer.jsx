@@ -3,7 +3,7 @@ import './offer.css';
 
 function Offer() {
     return (
-        <div className="offer_bg w-full container mx-auto rounded-lg mt-16">
+        <div className="offer_bg w-full container mx-auto rounded-lg mt-12">
             <div className="container mx-auto px-4 flex justify-between items-center flex-col lg:flex-row py-8">
                 <img
                     className="lg:max-w-[800px] max-h-[700px]"
