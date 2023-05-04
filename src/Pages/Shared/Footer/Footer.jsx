@@ -63,11 +63,13 @@ function Footer() {
                     <h2 className="text-white font-bold mb-2 text-lg">CONTACT</h2>
                     <p>1286 Hinkle Deegan Lake Road</p>
                     <p>14850-NY, USA</p>
-                    <p className="flex items-center gap-1">
-                        <BsFillTelephoneFill /> : +1 607-266-7597
+                    <p className="flex items-center gap-2">
+                        <BsFillTelephoneFill />
+                        +1 607-266-7597
                     </p>
-                    <p className="flex items-center gap-1">
-                        <BsEnvelope /> : admin@legend-chef.com
+                    <p className="flex items-center gap-2">
+                        <BsEnvelope />
+                        admin@legend-chef.com
                     </p>
                 </div>
             </div>
