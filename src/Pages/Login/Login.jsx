@@ -6,6 +6,7 @@ import { BsGithub } from 'react-icons/bs';
 import { FcGoogle } from 'react-icons/fc';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/AuthProviders';
+import Spinner from '../Shared/Spinner/Spinner';
 import './Login.css';
 
 function Login() {
@@ -15,6 +16,7 @@ function Login() {
     const from = location.state?.from?.pathname || '/';
     const [showPass, setShowPass] = useState(false);
     const [error, setError] = useState('');
+    const [loading, setLoading] = useState(false);
     const emailRref = useRef();
     const handelLogin = (e) => {
         e.preventDefault();
@@ -26,17 +28,18 @@ function Login() {
             .then(() => {
                 toast.success('Login successfully');
                 navigate(from, { replace: true });
+                setLoading(true);
             })
             .catch((err) => {
                 setError(err.message);
             });
     };
-
     const loginByGoogle = () => {
         loginWithGoogle()
             .then(() => {
                 toast.success('Login successfully');
                 navigate(from, { replace: true });
+                setLoading(true);
             })
             .catch((err) => {
                 console.log(err);
@@ -48,6 +51,7 @@ function Login() {
             .then(() => {
                 toast.success('Login successfully');
                 navigate(from, { replace: true });
+                setLoading(true);
             })
             .catch((err) => {
                 console.log(err);
@@ -70,6 +74,9 @@ function Login() {
         left: 0,
         behavior: 'instant',
     });
+    if (loading) {
+        return <Spinner />;
+    }
     return (
         <div className="container mx-auto px-4 flex justify-center items-center  min-h-[calc(100vh-600px)] my-16 ">
             <div className=" border border-slate-200 p-5 w-full lg:w-[600px] rounded-lg">

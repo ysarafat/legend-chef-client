@@ -20,7 +20,6 @@ function Home() {
     if (navigation.state === 'loading') {
         return <Spinner />;
     }
-    console.log(chef);
     return (
         <div>
             <Banner />

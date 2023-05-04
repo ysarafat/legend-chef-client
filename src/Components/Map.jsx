@@ -5,7 +5,6 @@ import './Map.css';
 
 import icon from '../../public/marker-icon.png';
 
-// create a new L.Icon object with the correct iconUrl path
 const markerIcon = new L.Icon({
     iconUrl: icon,
     iconSize: [25, 41],

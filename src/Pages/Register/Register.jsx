@@ -7,10 +7,12 @@ import { BsGithub } from 'react-icons/bs';
 import { FcGoogle } from 'react-icons/fc';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/AuthProviders';
+import Spinner from '../Shared/Spinner/Spinner';
 
 function Register() {
     const [showPass, setShowPass] = useState(false);
     const [error, setError] = useState('');
+    const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
     const location = useLocation();
     const from = location.state?.from?.pathname || '/';
@@ -33,12 +35,12 @@ function Register() {
             );
         }
         createUser(email, password)
-            .then((res) => {
-                console.log(res);
+            .then(() => {
+                setLoading(true);
+                navigate(from, { replace: true });
                 updateUser(name, photo)
                     .then(() => {
                         toast.success('Registration successfully');
-                        navigate(from, { replace: true });
                     })
                     .catch((err) => {
                         setError(err.message);
@@ -54,6 +56,7 @@ function Register() {
             .then(() => {
                 toast.success('Login successfully');
                 navigate(from, { replace: true });
+                setLoading(true);
             })
             .catch((err) => {
                 console.log(err);
@@ -65,6 +68,7 @@ function Register() {
             .then(() => {
                 toast.success('Login successfully');
                 navigate(from, { replace: true });
+                setLoading(true);
             })
             .catch((err) => {
                 console.log(err);
@@ -75,6 +79,9 @@ function Register() {
         left: 0,
         behavior: 'instant',
     });
+    if (loading) {
+        return <Spinner />;
+    }
     return (
         <section className="container mx-auto px-4 flex justify-center items-center min-h-[calc(100vh-600px)] my-16">
             <div className=" border border-slate-200 p-5 w-full lg:w-[600px] rounded-lg">
