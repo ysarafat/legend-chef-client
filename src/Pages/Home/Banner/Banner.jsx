@@ -22,7 +22,7 @@ function Banner() {
                 <div className="lg:pt-10 lg:w-1/2">
                     <img
                         className="lg:h-[600px] mx-auto"
-                        src="https://i.ibb.co/HBsjjck/bg-chef-hero-1.png"
+                        src="https://i.ibb.co/Bsg3vT0/bg-chef-hero.webp"
                         alt=""
                     />
                 </div>

@@ -26,9 +26,9 @@ function RecipeDetails() {
     }
     return (
         <div className="recipe container mx-auto px-4 mb-16">
-            <LazyLoad>
+            <LazyLoad threshold={0.95} offset={100}>
                 <img
-                    className="w-full lg:h-[800px] object-cover rounded-lg "
+                    className="w-full lg:h-[650px] object-cover rounded-lg "
                     src={recipe_img}
                     alt=""
                 />

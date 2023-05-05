@@ -7,7 +7,7 @@ function Offer() {
             <div className="container mx-auto px-4 flex justify-between items-center flex-col lg:flex-row py-8">
                 <img
                     className="lg:max-w-[800px] max-h-[700px]"
-                    src="https://i.ibb.co/CKbMLXY/My-project.png"
+                    src="https://i.ibb.co/4dDqQcL/burgar-offer.webp"
                     alt=""
                 />
                 <div>
