@@ -12,6 +12,7 @@ import {
     updateProfile,
 } from 'firebase/auth';
 import React, { createContext, useEffect, useState } from 'react';
+import { toast } from 'react-hot-toast';
 import app from '../Firebase/Firebase.config';
 
 const auth = getAuth(app);
@@ -32,7 +33,14 @@ function AuthProviders({ children }) {
         return updateProfile(auth.currentUser, {
             displayName: name,
             photoURL: photo,
-        });
+        })
+            .then(() => {
+                toast.success('Registration successfully');
+                setLoading(false);
+            })
+            .catch((err) => {
+                console.log(err);
+            });
     };
     // login user
     const login = (email, password) => {

@@ -17,6 +17,7 @@ function Register() {
     const location = useLocation();
     const from = location.state?.from?.pathname || '/';
     const { createUser, updateUser, loginWithGoogle, loginWithGithub } = useContext(AuthContext);
+
     const handelRegister = (e) => {
         e.preventDefault();
         setError('');
@@ -38,13 +39,7 @@ function Register() {
             .then(() => {
                 setLoading(true);
                 navigate(from, { replace: true });
-                updateUser(name, photo)
-                    .then(() => {
-                        toast.success('Registration successfully');
-                    })
-                    .catch((err) => {
-                        setError(err.message);
-                    });
+                updateUser(name, photo);
             })
             .catch((err) => {
                 console.log(err);
